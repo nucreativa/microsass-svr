@@ -1,0 +1,9 @@
+services:
+  app:
+    image: nucreativa/nextjs-bupot
+    ports:
+      - "3000:3000"
+  api:
+    image: nucreativa/fastapi-microsaas
+    ports:
+      - "8000:8000"
