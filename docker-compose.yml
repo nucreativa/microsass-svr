@@ -7,3 +7,13 @@ services:
     image: nucreativa/fastapi-microsaas
     ports:
       - "8000:8000"
+  mq:
+    image: schickling/beanstalkd
+    ports:
+      - "11300:11300"
+  mqui:
+    image: aurora:latest
+    build: ./aurora/
+    restart: always
+    ports:
+      - "9090:3000"
