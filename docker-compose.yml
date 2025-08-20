@@ -1,20 +1,23 @@
 services:
   app:
     image: nucreativa/nextjs-bupot
+    restart: always
     ports:
       - "3000:3000"
   api:
     image: nucreativa/fastapi-microsaas
+    restart: always
     ports:
       - "8000:8000"
     volumes:
-      - ./uploads:/public/uploads
-      - ./downloads:/public/downloads
+      - ./uploads:/app/public/uploads
+      - ./downloads:/app/public/downloads
     environment:
       - BEANSTALK_HOST=mq
       - BEANSTALK_PORT=11300
   mq:
     image: schickling/beanstalkd
+    restart: always
     ports:
       - "11300:11300"
   mqui:
