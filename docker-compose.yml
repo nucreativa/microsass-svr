@@ -7,6 +7,12 @@ services:
     image: nucreativa/fastapi-microsaas
     ports:
       - "8000:8000"
+    volumes:
+      - ./uploads:/public/uploads
+      - ./downloads:/public/downloads
+    environment:
+      - BEANSTALK_HOST=mq
+      - BEANSTALK_PORT=11300
   mq:
     image: schickling/beanstalkd
     ports:
